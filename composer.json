@@ -1,0 +1,21 @@
+{
+	"name": "mirarus/bmvc-exception",
+	"description": "Mirarus BMVC Exception (Basic MVC Exception)",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Ali Güçlü",
+			"email": "aliguclutr@gmail.com"
+		}
+	],
+	"require": {
+		"php": "^7.3 || ^8.0",
+		"mirarus/bmvc-libs": "0.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"BMVC\\Exception\\": "src"
+		}
+	}
+}
