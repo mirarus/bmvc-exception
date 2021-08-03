@@ -18,26 +18,17 @@ use Exception;
 class ClassException extends Exception
 {
 
-	private static $namespaces = [
+	private $namespaces = [
 		'BMVC\\Core', 
 		'BMVC\\Libs', 
 		'BMVC\\Exception'
 	];
 
-	public function __construct($message)
+	public function __construct($message, $class=null)
 	{
-		#
-		$path = (dirname(dirname(dirname(dirname(__DIR__)))) . DIRECTORY_SEPARATOR);
-		$path = @str_replace(['/', '//', '\\'], DIRECTORY_SEPARATOR, $path);
-		#
-		$class = @str_replace([$path, '.php'], null, self::getFile());
-		$class = @str_replace(['/', '//'], '\\', $class);
-		#
-
-		if (class_exists($class)) {
-		
-			$class = str_replace(self::$namespaces, null, $class);
-			$message = '(' . $class . ') Error! | ' . $message;
+		if ($class && @class_exists($class)) {
+			$class = str_replace($this->namespaces, null, $class);
+			$message = '"' . $class . '" Class Error! | ' . $message;
 		}
 
 		parent::__construct($message);
