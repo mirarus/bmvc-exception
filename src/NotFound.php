@@ -6,7 +6,7 @@
  * Mirarus BMVC
  * @package BMVC\Exception
  * @author  Ali Güçlü (Mirarus) <aliguclutr@gmail.com>
- * @link https://github.com/mirarus/bmvc-exceptions
+ * @link https://github.com/mirarus/bmvc-exception
  * @license http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version 0.0
  */

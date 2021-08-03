@@ -6,15 +6,14 @@
  * Mirarus BMVC
  * @package BMVC\Exception
  * @author  Ali Güçlü (Mirarus) <aliguclutr@gmail.com>
- * @link https://github.com/mirarus/bmvc-exceptions
+ * @link https://github.com/mirarus/bmvc-exception
  * @license http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version 0.2
+ * @version 0.3
  */
 
 namespace BMVC\Exception;
 
 use Exception;
-use BMVC\Libs\{CL, FS};
 
 class ClassException extends Exception
 {
@@ -27,9 +26,15 @@ class ClassException extends Exception
 
 	public function __construct($message)
 	{
-		$class = str_replace([FS::app(), '.php'], null, self::getFile());
+		#
+		$path = (dirname(dirname(dirname(dirname(__DIR__)))) . DIRECTORY_SEPARATOR);
+		$path = @str_replace(['/', '//', '\\'], DIRECTORY_SEPARATOR, $path);
+		#
+		$class = @str_replace([$path, '.php'], null, self::getFile());
+		$class = @str_replace(['/', '//'], '\\', $class);
+		#
 
-		if (CL::is_class($class)) {
+		if (class_exists($class)) {
 		
 			$class = str_replace(self::$namespaces, null, $class);
 			$message = '(' . $class . ') Error! | ' . $message;
