@@ -16,5 +16,10 @@
 		"psr-4": {
 			"BMVC\\Exception\\": "src"
 		}
+	},
+	"config": {
+		"preferred-install": "dist",
+		"sort-packages": true,
+		"optimize-autoloader": true
 	}
 }
