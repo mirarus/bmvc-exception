@@ -18,10 +18,20 @@ use Exception;
 class NotFound extends Exception
 {
 
+	/**
+	 * @var string
+	 */
 	protected $message = 'Page not found!';
+
+	/**
+	 * @var integer
+	 */
 	protected $code = 404;
 
-	public function __construct($message=null)
+	/**
+	 * @param string|null $message
+	 */
+	public function __construct(string $message = null)
 	{
 		$message = ($message ? $message : $this->message);
 
